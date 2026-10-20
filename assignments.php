@@ -112,18 +112,39 @@ $assignments = $pdo->query($query)->fetchAll();
                 <h3 class="fw-bold text-primary m-0">Quad</h3>
             </div>
             
-            <nav class="d-flex flex-column gap-2">
-                <a href="dashboard.php" class="nav-link-custom"><i class="fa-solid fa-house fs-5"></i> Home</a>
-                <a href="chat.php" class="nav-link-custom justify-content-between">
-                    <div class="d-flex align-items-center gap-3">
-                        <i class="fa-solid fa-comments fs-5"></i> Messages
-                    </div>
-                    <span class="badge bg-primary rounded-pill" id="sidebarUnreadBadge" style="display: none;">0</span>
-                </a>
-                <a href="assignments.php" class="nav-link-custom active"><i class="fa-solid fa-book-open fs-5"></i> Study Notes</a>
-                <a href="about.php" class="nav-link-custom"><i class="fa-solid fa-circle-info fs-5"></i> About</a>
-                <a href="contact.php" class="nav-link-custom"><i class="fa-solid fa-envelope fs-5"></i> Contact</a>
-            </nav>
+            <?php
+// Agar messages count ya koi aur count fetch karna ho toh yeh queries use kar sakte hain:
+$unread_msg_count = 0; // Agar messages table se count lana ho
+?>
+<nav class="d-flex flex-column gap-2">
+    <a href="dashboard.php" class="nav-link-custom <?php echo (basename($_SERVER['PHP_SELF']) == 'dashboard.php') ? 'active' : ''; ?>">
+        <i class="fa-solid fa-house fs-5"></i> Home
+    </a>
+    <a href="search.php" class="nav-link-custom <?php echo (basename($_SERVER['PHP_SELF']) == 'search.php') ? 'active' : ''; ?>">
+        <i class="fa-solid fa-magnifying-glass fs-5"></i> Search Users
+    </a>
+    <a href="follows.php" class="nav-link-custom <?php echo (basename($_SERVER['PHP_SELF']) == 'follows.php') ? 'active' : ''; ?>">
+        <i class="fa-solid fa-user-plus fs-5"></i> Following
+    </a>
+    <a href="groups.php" class="nav-link-custom <?php echo (basename($_SERVER['PHP_SELF']) == 'groups.php') ? 'active' : ''; ?>">
+        <i class="fa-solid fa-users-rectangle fs-5"></i> Study Groups
+    </a>
+    <a href="chat.php" class="nav-link-custom d-flex justify-content-between align-items-center <?php echo (basename($_SERVER['PHP_SELF']) == 'chat.php') ? 'active' : ''; ?>">
+        <span><i class="fa-solid fa-comments fs-5 me-3"></i> Messages</span>
+        <?php if (!empty($unread_msg_count) && $unread_msg_count > 0): ?>
+            <span class="badge bg-primary rounded-pill"><?php echo $unread_msg_count; ?></span>
+        <?php endif; ?>
+    </a>
+    <a href="assignments.php" class="nav-link-custom <?php echo (basename($_SERVER['PHP_SELF']) == 'assignments.php') ? 'active' : ''; ?>">
+        <i class="fa-solid fa-book-open fs-5"></i> Study Notes
+    </a>
+    <a href="about.php" class="nav-link-custom <?php echo (basename($_SERVER['PHP_SELF']) == 'about.php') ? 'active' : ''; ?>">
+        <i class="fa-solid fa-circle-info fs-5"></i> About
+    </a>
+    <a href="contact.php" class="nav-link-custom <?php echo (basename($_SERVER['PHP_SELF']) == 'contact.php') ? 'active' : ''; ?>">
+        <i class="fa-solid fa-envelope fs-5"></i> Contact
+    </a>
+</nav>
         </div>
 
         <div>

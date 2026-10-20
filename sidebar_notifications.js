@@ -9,11 +9,13 @@ function updateGlobalUnreadCount() {
         const sidebarBadge = $('#sidebarUnreadBadge');
         if (sidebarBadge.length) {
             if (totalUnread > 0) {
-                sidebarBadge.text(totalUnread).css('display', 'inline-block');
+                sidebarBadge.text(totalUnread).show();
             } else {
                 sidebarBadge.text('0').hide();
             }
         }
+    }).fail(function(jqXHR, textStatus, errorThrown) {
+        console.error("Unread count fetch error: ", textStatus, errorThrown);
     });
 }
 

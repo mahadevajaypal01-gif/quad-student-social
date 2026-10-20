@@ -140,6 +140,8 @@ $user_posts = $posts_stmt->fetchAll();
                     </div>
                     <span class="badge bg-primary rounded-pill" id="sidebarUnreadBadge" style="display: none;">0</span>
                 </a>
+                <a href="follows.php" class="nav-link-custom"><i class="fa-solid fa-user-plus fs-5"></i> Following</a>
+                <a href="groups.php" class="nav-link-custom"><i class="fa-solid fa-users-rectangle fs-5"></i> Study Groups</a>
                 <a href="assignments.php" class="nav-link-custom"><i class="fa-solid fa-book-open fs-5"></i> Study Notes</a>
                 <a href="about.php" class="nav-link-custom"><i class="fa-solid fa-circle-info fs-5"></i> About</a>
                 <a href="contact.php" class="nav-link-custom"><i class="fa-solid fa-envelope fs-5"></i> Contact</a>
